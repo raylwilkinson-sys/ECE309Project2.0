@@ -1,3 +1,8 @@
+#ifndef MESSAGE_H
+#define MESSAGE_H
+
+#include <string>
+
 enum class Role { System, User, Assistant };
 
 class Message {
@@ -16,3 +21,6 @@ private:
     Role        role_;
     std::string content_;
 };
+
+
+#endif // MESSAGE_H

@@ -1,3 +1,9 @@
+#ifndef SENTINEL_SCANNER_H
+#define SENTINEL_SCANNER_H
+
+#include <string>
+#include <string_view>
+
 class SentinelScanner {
 public:
     explicit SentinelScanner(std::string sentinel);
@@ -19,3 +25,4 @@ private:
                              // trailing characters that could still
                              // become the start of the sentinel
 };
+# endif // SENTINEL_SCANNER_H

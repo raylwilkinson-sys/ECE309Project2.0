@@ -1,3 +1,9 @@
+#ifndef CONVERSATION_H
+#define CONVERSATION_H
+
+#include "core/message.h"
+#include <cstddef>
+
 class Conversation {
 public:
     // Empty conversation: size() == 0, no allocation yet.
@@ -39,3 +45,5 @@ private:
     std::size_t size_ = 0;
     std::size_t capacity_ = 0;
 };
+
+#endif // CONVERSATION_H
