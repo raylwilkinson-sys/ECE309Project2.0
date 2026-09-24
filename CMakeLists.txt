@@ -9,9 +9,12 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Enable strict warnings and AddressSanitizer.
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -fsanitize=address,undefined -g")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address,undefined")
-
+if (MSVC)
+    add_compile_options(/W4)
+else()
+    add_compile_options(-Wall -Wextra -Wpedantic -fsanitize=address,undefined -g)
+    add_link_options(-fsanitize=address,undefined)
+endif()
 include_directories(include)
 
 # 1. Define the core files (everything EXCEPT main.cpp).
@@ -22,6 +25,7 @@ set(CORE_SOURCES
     src/scripted_client.cpp
     src/replay_client.cpp
     src/harness.cpp
+    src/message.cpp
 )
 
 # 2. Build the main program.
