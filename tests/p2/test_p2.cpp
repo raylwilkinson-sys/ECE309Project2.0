@@ -197,7 +197,9 @@ int main() {
             "role: assistant\none\n---\n"
             "role: assistant\ntwo\n";
 
-        Harness h(std::make_unique<ScriptedModelClient>("t.script"), { 2 });
+        HarnessConfig cfg;
+        cfg.max_turns = 2;
+        Harness h(std::make_unique<ScriptedModelClient>("t.script"), { cfg });
         TestInput in( "a","b" );
         TestOutput out;
 
@@ -212,7 +214,9 @@ int main() {
             "chunk: 3\n"
             "role: assistant\nbye<|end_conversation|>\n";
 
-        Harness h(std::make_unique<ScriptedModelClient>("s.script"), { 5 });
+        HarnessConfig cfg;
+        cfg.max_turns = 5;
+        Harness h(std::make_unique<ScriptedModelClient>("s.script"), { cfg});
         TestInput in( "hello" );
         TestOutput out;
 
